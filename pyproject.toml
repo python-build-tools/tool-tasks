@@ -1,0 +1,47 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "tool-tasks"
+version = "0.1.0"
+description = "Zero-dependency Python task runner using pyproject.toml [tool.tasks]"
+authors = ["python-build-tools"]
+readme = "README.md"
+packages = [{include = "tool_tasks", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-cov = "^5.0.0"
+
+[tool.poetry.scripts]
+task = "tool_tasks.cli:main"
+
+[tool.tasks]
+# Shell command example
+hello = "echo 'Hello from task runner!'"
+
+# Task alias example
+greet = "hello"
+
+# Task chain example
+test-all = ["test", "lint"]
+
+# Shell command with alias
+test = "python3 -m pytest tests/ -v"
+lint = "echo 'Linting...'"
+
+# Dict task with cmd
+[tool.tasks.build]
+cmd = "echo 'Building project...'"
+
+# Dict task with chain
+[tool.tasks.ci]
+chain = ["test", "build"]
+
+# Python entry point example
+[tool.tasks.version]
+call = "tool_tasks:print_version"
