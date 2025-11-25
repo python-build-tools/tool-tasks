@@ -1,5 +1,6 @@
 """Tests for the config module."""
 
+import os
 import sys
 import tempfile
 from pathlib import Path
@@ -20,7 +21,6 @@ test = "echo test"
 """)
 
         # Change to temp directory
-        import os
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
@@ -43,7 +43,6 @@ test = "echo test"
         subdir.mkdir()
 
         # Change to subdirectory
-        import os
         old_cwd = os.getcwd()
         try:
             os.chdir(subdir)
@@ -61,7 +60,6 @@ def test_pyproject_not_found():
         subdir.mkdir()
 
         # Change to subdirectory
-        import os
         old_cwd = os.getcwd()
         try:
             os.chdir(subdir)

@@ -1,5 +1,6 @@
 """Tests for the executor module."""
 
+import os
 import sys
 import tempfile
 from pathlib import Path
@@ -172,7 +173,6 @@ class TestClass:
 """)
 
         # Add module to sys.path
-        import sys
         sys.path.insert(0, str(tmpdir_path))
 
         try:
@@ -215,7 +215,6 @@ def check_args():
     return 1
 """)
 
-        import sys
         sys.path.insert(0, str(tmpdir_path))
 
         try:
@@ -247,7 +246,6 @@ def returns_none():
     pass
 """)
 
-        import sys
         sys.path.insert(0, str(tmpdir_path))
 
         try:
@@ -278,7 +276,6 @@ def returns_string():
     return "hello"
 """)
 
-        import sys
         sys.path.insert(0, str(tmpdir_path))
 
         try:
@@ -418,7 +415,6 @@ def raises_error():
     raise ValueError("test error")
 """)
 
-        import sys
         sys.path.insert(0, str(tmpdir_path))
 
         try:

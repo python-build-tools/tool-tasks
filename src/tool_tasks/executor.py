@@ -1,6 +1,7 @@
 """Task executor for running different types of tasks."""
 
 import importlib
+import shlex
 import subprocess
 import sys
 from typing import Any
@@ -140,9 +141,10 @@ class TaskExecutor:
         Returns:
             Exit code from the shell command.
         """
-        # Append additional arguments to the command
+        # Append additional arguments to the command with proper escaping
         if args:
-            command = f"{command} {' '.join(args)}"
+            escaped_args = ' '.join(shlex.quote(arg) for arg in args)
+            command = f"{command} {escaped_args}"
 
         try:
             result = subprocess.run(command, shell=True, cwd=self.config.config_path.parent)

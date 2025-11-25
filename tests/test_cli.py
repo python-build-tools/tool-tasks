@@ -1,5 +1,6 @@
 """Tests for the CLI module."""
 
+import os
 import sys
 import tempfile
 from pathlib import Path
@@ -33,7 +34,7 @@ build = "make build"
 clean = "rm -rf dist"
 """)
 
-        import os
+
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
@@ -52,7 +53,7 @@ clean = "rm -rf dist"
 def test_cli_list_tasks_no_pyproject(monkeypatch, capsys):
     """Test CLI --list when pyproject.toml not found."""
     with tempfile.TemporaryDirectory() as tmpdir:
-        import os
+
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
@@ -78,7 +79,7 @@ def test_cli_execute_task(monkeypatch):
 hello = "echo hello"
 """)
 
-        import os
+
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
@@ -102,7 +103,7 @@ def test_cli_execute_task_with_args(monkeypatch):
 echo = "echo"
 """)
 
-        import os
+
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
@@ -126,7 +127,7 @@ def test_cli_execute_nonexistent_task(monkeypatch, capsys):
 test = "echo test"
 """)
 
-        import os
+
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
@@ -145,7 +146,7 @@ test = "echo test"
 def test_cli_no_pyproject(monkeypatch, capsys):
     """Test CLI when pyproject.toml not found."""
     with tempfile.TemporaryDirectory() as tmpdir:
-        import os
+
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
@@ -171,7 +172,7 @@ def test_cli_list_empty_tasks(monkeypatch, capsys):
 name = "test"
 """)
 
-        import os
+
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
@@ -196,7 +197,7 @@ def test_cli_unexpected_error(monkeypatch, capsys):
 test = "echo test"
 """)
 
-        import os
+
         old_cwd = os.getcwd()
         try:
             os.chdir(tmpdir)
